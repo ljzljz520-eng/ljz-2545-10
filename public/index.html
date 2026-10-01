@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>云麓温泉町 · 导览</title>
+<link rel="stylesheet" href="vendor/leaflet.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="mark">♨</span>
+    <div>
+      <h1>云麓温泉町 <small>ゆくもりガイド</small></h1>
+      <p class="tagline">设施级导览 · 可组合时窗 · 锁定不偷换</p>
+    </div>
+  </div>
+  <nav class="tabs">
+    <button data-tab="map" class="active">地图筛选</button>
+    <button data-tab="rec">主题推荐</button>
+    <button data-tab="trip">我的行程</button>
+    <button data-tab="verify">验收与说明</button>
+  </nav>
+</header>
+
+<main>
+  <!-- ============ 地图筛选 ============ -->
+  <section id="tab-map" class="tab active">
+    <aside class="panel filters">
+      <h2>筛选条件</h2>
+      <div class="chk">
+        <label><input type="checkbox" id="f-stay"> 住宿 <em>stay</em></label>
+        <label><input type="checkbox" id="f-food"> 餐饮 <em>food</em></label>
+        <label><input type="checkbox" id="f-family"> 亲子设施 <em>family</em></label>
+      </div>
+      <label class="at">到访时刻
+        <input type="datetime-local" id="f-at" step="900">
+        <small>留空则只看业态，不校验时窗</small>
+      </label>
+      <div class="walk">
+        <label>步行距离 <span id="walk-val">800</span> m 以内
+          <input type="range" id="f-walk" min="100" max="2000" step="50" value="800">
+        </label>
+        <div class="origin">
+          出发点：<span id="origin-label">以「足汤公园」为默认</span>
+          <button id="set-origin" class="mini">点地图设出发点</button>
+        </div>
+        <small class="hint">实测边优先，其次路由服务，最后直线估算（4.5 km/h）</small>
+      </div>
+      <button id="apply" class="primary">应用筛选</button>
+
+      <div class="legend">
+        <h3>图例</h3>
+        <ul>
+          <li><span class="dot bath">♨</span> 浴场</li>
+          <li><span class="dot lodging">宿</span> 住宿</li>
+          <li><span class="dot food">食</span> 餐饮/咖啡</li>
+          <li><span class="dot other">他</span> 公园/店铺</li>
+          <li><span class="dot warn">核</span> 待核信息</li>
+          <li><span class="dot off">∅</span> 被过滤（见原因）</li>
+        </ul>
+      </div>
+    </aside>
+
+    <div class="map-wrap">
+      <div id="map"></div>
+      <div id="filter-summary" class="summary"></div>
+    </div>
+
+    <aside class="panel reasons">
+      <h2>过滤原因 <small>为什么这个点在/不在结果里</small></h2>
+      <div id="excluded"></div>
+      <h3 class="included-h">通过筛选的地点</h3>
+      <div id="included"></div>
+    </aside>
+  </section>
+
+  <!-- ============ 主题推荐 ============ -->
+  <section id="tab-rec" class="tab">
+    <div class="panel wide">
+      <h2>原创主题路线</h2>
+      <p class="muted">推荐条目直接展开到“你真正要去的那个设施/泡池/楼层”，而不是只给一个场馆名。
+        部分泡池检修时，同馆的餐饮、住宿仍然会被推荐。</p>
+      <label class="at">按时刻校验可去性
+        <input type="datetime-local" id="rec-at" step="900"></label>
+      <div id="themes" class="theme-cards"></div>
+      <div id="rec-items"></div>
+    </div>
+  </section>
+
+  <!-- ============ 行程 ============ -->
+  <section id="tab-trip" class="tab">
+    <div class="panel wide">
+      <h2>我的行程 <small id="trip-ver"></small></h2>
+      <div class="row">
+        <label>行程
+          <select id="trip-id"></select>
+        </label>
+        <label>起始时刻 <input type="datetime-local" id="trip-start" step="900"></label>
+        <button id="btn-full" class="primary">完整重算</button>
+        <button id="btn-partial">按依赖局部修复</button>
+      </div>
+      <div class="row two-dev">
+        <strong>两台设备：</strong>
+        <select id="dev-id">
+          <option value="device-A">设备 A（手机）</option>
+          <option value="device-B">设备 B（平板）</option>
+        </select>
+        <button id="dev-add" class="mini">当前设备：加一个行程点</button>
+        <button id="dev-lockall" class="mini">当前设备：锁定全部点</button>
+        <a class="mini-link" id="show-edits">查看编辑/冲突历史</a>
+      </div>
+      <div id="conflicts" class="conflicts"></div>
+      <div id="trip-items" class="trip-list"></div>
+      <details class="fresh">
+        <summary>路段耗时 / 服务时窗 / 缓存新鲜度（重算依据）</summary>
+        <pre id="freshness">尚未重算</pre>
+      </details>
+      <details class="fresh">
+        <summary>设备编辑历史</summary>
+        <pre id="edit-log">无</pre>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 验收与说明 ============ -->
+  <section id="tab-verify" class="tab">
+    <div class="panel wide">
+      <h2>验收场景与站内设计说明</h2>
+
+      <h3>① 维护（含跨日）与“不连坐”</h3>
+      <p>汤本馆·露天桧木池安排了 <b>2026-10-05 20:00 → 10-07 09:00</b> 的跨日检修；
+        同馆汤上食堂、以及全町住宿不受影响。</p>
+      <div class="row">
+        <button class="mini vact" data-act="crossday">复现：在检修时段筛选温泉町</button>
+      </div>
+
+      <h3>② 链接失效</h3>
+      <p>来源 #3（樱见食堂旧页）巡检为 HTTP 410；系统把来源标记为 dead 并保留巡检记录。</p>
+      <div class="row"><button class="mini vact" data-act="links">查看全部来源与巡检状态</button></div>
+      <pre id="out-links" class="out"></pre>
+
+      <h3>③ 地点合并</h3>
+      <p>旧「樱见食堂」已并入「峰味食堂」：设施、别名、步行边、行程引用全部迁移，旧点 301 式指向保留点。</p>
+      <div class="row"><button class="mini vact" data-act="merge">查看旧地点 #8 的解析结果</button></div>
+      <pre id="out-merge" class="out"></pre>
+
+      <h3>④ 过期离线包</h3>
+      <p>2026.07 包已过期时，客户端必须收到明确的 expired 状态而不是静默使用旧数据。</p>
+      <div class="row"><button class="mini vact" data-act="offline">查看离线包状态</button></div>
+      <pre id="out-offline" class="out"></pre>
+
+      <h3>⑤ 两台设备编辑同一行程</h3>
+      <p>设备 B 若带着旧版本号提交，会收到 409 冲突，编辑保留待处理，服务端绝不覆盖设备 A 的修改。</p>
+      <div class="row"><button class="mini vact" data-act="twodev">一键模拟 A/B 并发</button></div>
+      <pre id="out-twodev" class="out"></pre>
+
+      <h3>⑥ 锁定后开放时间变化</h3>
+      <p>锁定行程点后修改设施开放时间：锁定保留，行程页面解释冲突，不偷偷换点。</p>
+      <div class="row"><button class="mini vact" data-act="lockchange">复现：锁定 → 改时 → 重算</button></div>
+      <pre id="out-lockchange" class="out"></pre>
+
+      <h3>⑦ 完整重算 vs 局部修复一致性</h3>
+      <div class="row"><button class="mini vact" data-act="equiv">同状态各跑一遍并比对结果</button></div>
+      <pre id="out-equiv" class="out"></pre>
+
+      <h3>⑧ 泉质：有来源的描述，不作医疗推断</h3>
+      <p>所有泉质信息都挂接来源、检测日期，并固定附下述声明：</p>
+      <blockquote class="disc">泉质条目仅为带来源的观测性描述（温度、pH、泉质类型、观感），
+        不构成任何医疗功效承诺或治疗建议；入库即禁止疗效断言词。</blockquote>
+
+      <h3>站内原创设计说明「湯けむり · 五感散步」</h3>
+      <p>视觉取色来自温泉现场：<b>桧木绿</b>（步道与林坡）、<b>藏青蓝</b>（夜汤与溪面）、
+        <b>朱印红</b>（关键操作与冲突警示）、米纸底配粗界的和纸卡片。
+        信息层级遵循“先设施、后场馆”：地图点选后第一层即具体泡池/楼层，
+        凡不可用单元单独置灰并写明原因，从不让兄弟设施连坐。
+        待核信息使用「核」印戳样式与正式数据严格区分；冲突用红印签说明，语气是解释而非替用户决定。
+        原创主题三段：<i>晨雾逐汤 / 泡泡亲子半日 / 夜蒸小吃线</i>，文案与动线均为本产品原创。</p>
+      <p class="muted">完整设计与部署说明见仓库 <code>docs/</code> 目录（DESIGN.md / API.md / DEPLOY.md）。</p>
+    </div>
+  </section>
+</main>
+
+<div id="placecard" class="placecard hidden"></div>
+<div id="toast"></div>
+<script src="vendor/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

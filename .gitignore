@@ -1,6 +1,9 @@
 # solo-manager GitHub sync ignores
 node_modules/
 vendor/
+# 但保留站内 vendored 的前端依赖
+!public/vendor/
+!public/vendor/**
 dist/
 build/
 .next/

@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: onsen
+      POSTGRES_PASSWORD: onsen
+      POSTGRES_DB: onsen
+    ports:
+      - "55432:5432"
+    volumes:
+      - onsen-pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U onsen -d onsen"]
+      interval: 4s
+      timeout: 3s
+      retries: 12
+
+  api:
+    build: .
+    environment:
+      DATABASE_URL: postgres://onsen:onsen@db:5432/onsen
+      TZ_NAME: Asia/Tokyo
+      PORT: "3000"
+      # 可选：步行路径服务；不配置时自动回退实测边/直线估算
+      # OSRM_BASE_URL: http://osrm:5000
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    # 首次启动初始化 schema+seed（已存在时如需重置：RESET_DB=1）
+    command: sh -c "node scripts/init-db.js && node src/server.js"
+
+volumes:
+  onsen-pg:

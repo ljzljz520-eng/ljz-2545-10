@@ -1,0 +1,31 @@
+{
+  "name": "onsen-town-guide",
+  "version": "1.0.0",
+  "description": "温泉小镇导览：地图筛选、设施级推荐、行程时间窗与锁定冲突、PG 单一事实源、双设备同步与离线包验收",
+  "type": "commonjs",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "db:init": "node scripts/init-db.js",
+    "test": "bash -c 'fails=0; for f in test/*.test.js; do echo \"== $f\"; node --test \"$f\" || fails=1; done; exit $fails'"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^4.22.3",
+    "leaflet": "^1.9.4",
+    "pg": "^8.23.1"
+  },
+  "optionalDependencies": {
+    "@embedded-postgres/darwin-arm64": "^17.4.0-beta.6",
+    "@embedded-postgres/darwin-x64": "^17.4.0-beta.6",
+    "@embedded-postgres/linux-arm64": "^17.4.0-beta.6",
+    "@embedded-postgres/linux-x64": "^17.4.0-beta.6"
+  },
+  "devDependencies": {
+    "@embedded-postgres/linux-arm64": "^18.4.0-beta.17",
+    "embedded-postgres": "^18.4.0-beta.17"
+  }
+}
