@@ -1,0 +1,26 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: guide
+      POSTGRES_PASSWORD: guide
+      POSTGRES_DB: hotspring
+    ports: ["5432:5432"]
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U guide -d hotspring"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  app:
+    build: .
+    environment:
+      DATABASE_URL: postgres://guide:guide@db:5432/hotspring
+      TOWN_TZ: UTC+9
+      PORT: "3000"
+    ports: ["3000:3000"]
+    depends_on:
+      db:
+        condition: service_healthy
+volumes:
+  pgdata:

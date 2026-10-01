@@ -1,0 +1,1347 @@
+{
+  "town": {
+    "name": "柚木沢温泉郷",
+    "tz": "UTC+9",
+    "center": {
+      "lat": 36.1028,
+      "lng": 137.9451
+    },
+    "note": "本数据为演示用虚构数据。泉质信息为描述性内容，不构成任何医疗功效主张。"
+  },
+  "places": [
+    {
+      "id": "p_station",
+      "name": "柚木沢駅・観光案内所",
+      "kind": "facility",
+      "lat": 36.1012,
+      "lng": 137.943,
+      "address": "柚木沢町駅前1",
+      "phone": "0577-00-0001",
+      "home_url": "https://guide.example.jp/official/yuginosawa",
+      "family_friendly": true,
+      "description": "行程起点。案内所可租赁婴儿车，有尿布台。"
+    },
+    {
+      "id": "p_kiri",
+      "name": "霧見湯（きりみゆ）旅館",
+      "kind": "onsen",
+      "lat": 36.1036,
+      "lng": 137.9468,
+      "address": "柚木沢町湯本21",
+      "phone": "0577-00-0101",
+      "home_url": "https://guide.example.jp/official/kirimiya",
+      "family_friendly": true,
+      "description": "渓流沿いの老舗。大露天・檜風呂・食事処・宿泊が同一地内に点在。"
+    },
+    {
+      "id": "p_momiji",
+      "name": "もみじ館",
+      "kind": "onsen",
+      "lat": 36.1049,
+      "lng": 137.9438,
+      "address": "柚木沢町紅葉5",
+      "phone": "0577-00-0102",
+      "home_url": "https://guide.example.jp/official/momiji",
+      "family_friendly": false,
+      "description": "こぢんまりとした共同浴場。岩風呂のほか、館内に土産コーナーがある。"
+    },
+    {
+      "id": "p_unzen",
+      "name": "雲仙（うんぜん）ホテル",
+      "kind": "lodging",
+      "lat": 36.1001,
+      "lng": 137.9482,
+      "address": "柚木沢町雲仙2",
+      "phone": "0577-00-0103",
+      "home_url": "https://guide.example.jp/official/unzen",
+      "family_friendly": true,
+      "description": "展望大浴場とキッズスペース、和室を備えるファミリー向け宿。"
+    },
+    {
+      "id": "p_dining",
+      "name": "お食事処 山笑庵（やまわらいあん）",
+      "kind": "dining",
+      "lat": 36.1021,
+      "lng": 137.9448,
+      "address": "柚木沢町仲町7",
+      "phone": "0577-00-0201",
+      "home_url": "https://guide.example.jp/official/yamawarai",
+      "family_friendly": true,
+      "description": "お座敷と小上がり、お子様ランチあり。"
+    },
+    {
+      "id": "p_cafe",
+      "name": "湯気カフェ",
+      "kind": "dining",
+      "lat": 36.1029,
+      "lng": 137.9442,
+      "address": "柚木沢町仲町9",
+      "home_url": "https://guide.example.jp/official/yugecafe",
+      "family_friendly": false,
+      "description": "朝8時から営業。温泉まんじゅうとコーヒー。"
+    },
+    {
+      "id": "p_park",
+      "name": "ちゃぷちゃぷ水遊び広場",
+      "kind": "facility",
+      "lat": 36.1057,
+      "lng": 137.9476,
+      "home_url": "https://guide.example.jp/official/chapu",
+      "family_friendly": true,
+      "description": "浅いせせらぎで水遊び。無料、屋外のため悪天候時は閉鎖。"
+    },
+    {
+      "id": "p_shop",
+      "name": "おみやげ処 柚子屋",
+      "kind": "shop",
+      "lat": 36.1018,
+      "lng": 137.9441,
+      "family_friendly": false,
+      "description": "ゆず加工品と地元菓子。"
+    },
+    {
+      "id": "p_footbath",
+      "name": "だんだん足湯",
+      "kind": "onsen",
+      "lat": 36.1025,
+      "lng": 137.9436,
+      "family_friendly": true,
+      "description": "駅前商店街の無料足湯。段差なし、車いす可。"
+    }
+  ],
+  "facilities": [
+    {
+      "id": "f_station_info",
+      "place_id": "p_station",
+      "name": "観光案内所",
+      "kind": "other",
+      "family_friendly": true,
+      "family_attrs": [
+        "diaper_table",
+        "stroller_rental"
+      ],
+      "note": "ベビーカー貸出あり"
+    },
+    {
+      "id": "f_kiri_roten",
+      "place_id": "p_kiri",
+      "name": "大露天風呂",
+      "kind": "bath",
+      "family_friendly": false,
+      "family_attrs": [],
+      "note": "夜25時まで開放（跨夜営業）"
+    },
+    {
+      "id": "f_kiri_hinoki",
+      "place_id": "p_kiri",
+      "name": "檜木（ひのき）風呂",
+      "kind": "bath",
+      "family_friendly": true,
+      "family_attrs": [
+        "family_bath",
+        "baby_seat"
+      ],
+      "note": "乳児用バスチェアあり"
+    },
+    {
+      "id": "f_kiri_rest",
+      "place_id": "p_kiri",
+      "name": "食事処 山桜",
+      "kind": "restaurant",
+      "family_friendly": true,
+      "family_attrs": [
+        "kids_menu",
+        "tatami"
+      ],
+      "note": "宿泊者以外も利用可"
+    },
+    {
+      "id": "f_kiri_room",
+      "place_id": "p_kiri",
+      "name": "客室「霧」（和室12畳）",
+      "kind": "room",
+      "family_friendly": true,
+      "family_attrs": [
+        "crib"
+      ],
+      "note": "チェックイン15時"
+    },
+    {
+      "id": "f_momiji_iwa",
+      "place_id": "p_momiji",
+      "name": "岩風呂",
+      "kind": "bath",
+      "family_friendly": false,
+      "family_attrs": [],
+      "note": ""
+    },
+    {
+      "id": "f_momiji_shop",
+      "place_id": "p_momiji",
+      "name": "もみじ館 売店",
+      "kind": "shop",
+      "family_friendly": false,
+      "family_attrs": [],
+      "note": "風呂の営業時間とは別"
+    },
+    {
+      "id": "f_unzen_bath",
+      "place_id": "p_unzen",
+      "name": "展望大浴場",
+      "kind": "bath",
+      "family_friendly": false,
+      "family_attrs": [],
+      "note": ""
+    },
+    {
+      "id": "f_unzen_kids",
+      "place_id": "p_unzen",
+      "name": "キッズプレイルーム",
+      "kind": "play",
+      "family_friendly": true,
+      "family_attrs": [
+        "play_room",
+        "diaper_table"
+      ],
+      "note": "宿泊者無料"
+    },
+    {
+      "id": "f_unzen_room",
+      "place_id": "p_unzen",
+      "name": "和室ツイン（ベビーベッド可）",
+      "kind": "room",
+      "family_friendly": true,
+      "family_attrs": [
+        "crib",
+        "night_light"
+      ],
+      "note": ""
+    },
+    {
+      "id": "f_yamawarai",
+      "place_id": "p_dining",
+      "name": "山笑庵 お座敷ホール",
+      "kind": "restaurant",
+      "family_friendly": true,
+      "family_attrs": [
+        "kids_menu",
+        "tatami",
+        "diaper_table"
+      ],
+      "note": "昼は予約推奨"
+    },
+    {
+      "id": "f_yuge",
+      "place_id": "p_cafe",
+      "name": "湯気カフェ店内",
+      "kind": "restaurant",
+      "family_friendly": false,
+      "family_attrs": [
+        "high_chair"
+      ],
+      "note": ""
+    },
+    {
+      "id": "f_chapu",
+      "place_id": "p_park",
+      "name": "せせらぎ水遊び場",
+      "kind": "play",
+      "family_friendly": true,
+      "family_attrs": [
+        "shallow_water",
+        "changing_tent"
+      ],
+      "note": "悪天候閉鎖"
+    },
+    {
+      "id": "f_yuzuya",
+      "place_id": "p_shop",
+      "name": "柚子屋 店舗",
+      "kind": "shop",
+      "family_friendly": false,
+      "family_attrs": [],
+      "note": ""
+    },
+    {
+      "id": "f_footbath",
+      "place_id": "p_footbath",
+      "name": "だんだん足湯（第1・第2区画）",
+      "kind": "bath",
+      "family_friendly": true,
+      "family_attrs": [
+        "step_free",
+        "wheelchair"
+      ],
+      "note": "無料"
+    }
+  ],
+  "spring_quality": [
+    {
+      "facility_id": "f_kiri_roten",
+      "source_text": "アルカリ性単純温泉。無色透明で、肌あたりはなめらか。浴場に掲示の成分表（2025年4月測定）による。",
+      "temperature_c": 41.2,
+      "claims": [
+        "alkaline",
+        "simple_spring",
+        "colorless",
+        "smooth"
+      ],
+      "source_id": "s_kiri_official",
+      "verified": true
+    },
+    {
+      "facility_id": "f_kiri_hinoki",
+      "source_text": "アルカリ性単純温泉（大露天と同一源泉を引湯）。香りは檜材によるもの。",
+      "temperature_c": 40.5,
+      "claims": [
+        "alkaline",
+        "simple_spring"
+      ],
+      "source_id": "s_kiri_official",
+      "verified": true
+    },
+    {
+      "facility_id": "f_momiji_iwa",
+      "source_text": "含食塩泉との口伝あり。成分表の最新版は未確認（2026年9月時点）。",
+      "temperature_c": null,
+      "claims": [
+        "reported_chloride"
+      ],
+      "source_id": "s_momiji_oldpage",
+      "verified": false
+    },
+    {
+      "facility_id": "f_unzen_bath",
+      "source_text": "単純温泉、やや白濁。ホテル公式サイトの宿泊プランページに記載。",
+      "temperature_c": 42.0,
+      "claims": [
+        "simple_spring",
+        "slightly_cloudy"
+      ],
+      "source_id": "s_unzen_official",
+      "verified": true
+    },
+    {
+      "facility_id": "f_footbath",
+      "source_text": "足湯用に加水調整。源泉名は「だんだんの湯」。成分分析書は案内所で閲覧可。",
+      "temperature_c": 39.0,
+      "claims": [
+        "diluted",
+        "simple_spring"
+      ],
+      "source_id": "s_field_2026",
+      "verified": true
+    }
+  ],
+  "windows": [
+    {
+      "id": "w1",
+      "facility_id": "f_station_info",
+      "dow": 0,
+      "open": 540,
+      "close": 1080
+    },
+    {
+      "id": "w2",
+      "facility_id": "f_station_info",
+      "dow": 1,
+      "open": 540,
+      "close": 1080
+    },
+    {
+      "id": "w3",
+      "facility_id": "f_station_info",
+      "dow": 2,
+      "open": 540,
+      "close": 1080
+    },
+    {
+      "id": "w4",
+      "facility_id": "f_station_info",
+      "dow": 3,
+      "open": 540,
+      "close": 1080
+    },
+    {
+      "id": "w5",
+      "facility_id": "f_station_info",
+      "dow": 4,
+      "open": 540,
+      "close": 1080
+    },
+    {
+      "id": "w6",
+      "facility_id": "f_station_info",
+      "dow": 5,
+      "open": 540,
+      "close": 1080
+    },
+    {
+      "id": "w7",
+      "facility_id": "f_station_info",
+      "dow": 6,
+      "open": 540,
+      "close": 1020
+    },
+    {
+      "id": "w8",
+      "facility_id": "f_kiri_roten",
+      "dow": 1,
+      "open": 360,
+      "close": 600
+    },
+    {
+      "id": "w9",
+      "facility_id": "f_kiri_roten",
+      "dow": 1,
+      "open": 900,
+      "close": 1500
+    },
+    {
+      "id": "w10",
+      "facility_id": "f_kiri_roten",
+      "dow": 2,
+      "open": 360,
+      "close": 600
+    },
+    {
+      "id": "w11",
+      "facility_id": "f_kiri_roten",
+      "dow": 2,
+      "open": 900,
+      "close": 1500
+    },
+    {
+      "id": "w12",
+      "facility_id": "f_kiri_roten",
+      "dow": 3,
+      "open": 360,
+      "close": 600
+    },
+    {
+      "id": "w13",
+      "facility_id": "f_kiri_roten",
+      "dow": 3,
+      "open": 900,
+      "close": 1500
+    },
+    {
+      "id": "w14",
+      "facility_id": "f_kiri_roten",
+      "dow": 4,
+      "open": 360,
+      "close": 600
+    },
+    {
+      "id": "w15",
+      "facility_id": "f_kiri_roten",
+      "dow": 4,
+      "open": 900,
+      "close": 1500
+    },
+    {
+      "id": "w16",
+      "facility_id": "f_kiri_roten",
+      "dow": 5,
+      "open": 360,
+      "close": 600
+    },
+    {
+      "id": "w17",
+      "facility_id": "f_kiri_roten",
+      "dow": 5,
+      "open": 900,
+      "close": 1500
+    },
+    {
+      "id": "w18",
+      "facility_id": "f_kiri_roten",
+      "dow": 6,
+      "open": 360,
+      "close": 600
+    },
+    {
+      "id": "w19",
+      "facility_id": "f_kiri_roten",
+      "dow": 6,
+      "open": 900,
+      "close": 1500
+    },
+    {
+      "id": "w20",
+      "facility_id": "f_kiri_roten",
+      "dow": 0,
+      "open": 420,
+      "close": 720
+    },
+    {
+      "id": "w21",
+      "facility_id": "f_kiri_roten",
+      "dow": 0,
+      "open": 900,
+      "close": 1380
+    },
+    {
+      "id": "w22",
+      "facility_id": "f_kiri_hinoki",
+      "dow": 1,
+      "open": 480,
+      "close": 1320
+    },
+    {
+      "id": "w23",
+      "facility_id": "f_kiri_hinoki",
+      "dow": 2,
+      "open": 480,
+      "close": 1320
+    },
+    {
+      "id": "w24",
+      "facility_id": "f_kiri_hinoki",
+      "dow": 3,
+      "open": 480,
+      "close": 1320
+    },
+    {
+      "id": "w25",
+      "facility_id": "f_kiri_hinoki",
+      "dow": 4,
+      "open": 480,
+      "close": 1320
+    },
+    {
+      "id": "w26",
+      "facility_id": "f_kiri_hinoki",
+      "dow": 5,
+      "open": 480,
+      "close": 1320
+    },
+    {
+      "id": "w27",
+      "facility_id": "f_kiri_hinoki",
+      "dow": 6,
+      "open": 480,
+      "close": 1380
+    },
+    {
+      "id": "w28",
+      "facility_id": "f_kiri_hinoki",
+      "dow": 0,
+      "open": 480,
+      "close": 1260
+    },
+    {
+      "id": "w29",
+      "facility_id": "f_kiri_rest",
+      "dow": 1,
+      "open": 690,
+      "close": 870
+    },
+    {
+      "id": "w30",
+      "facility_id": "f_kiri_rest",
+      "dow": 1,
+      "open": 1080,
+      "close": 1260
+    },
+    {
+      "id": "w31",
+      "facility_id": "f_kiri_rest",
+      "dow": 2,
+      "open": 690,
+      "close": 870
+    },
+    {
+      "id": "w32",
+      "facility_id": "f_kiri_rest",
+      "dow": 2,
+      "open": 1080,
+      "close": 1260
+    },
+    {
+      "id": "w33",
+      "facility_id": "f_kiri_rest",
+      "dow": 3,
+      "open": 690,
+      "close": 870
+    },
+    {
+      "id": "w34",
+      "facility_id": "f_kiri_rest",
+      "dow": 3,
+      "open": 1080,
+      "close": 1260
+    },
+    {
+      "id": "w35",
+      "facility_id": "f_kiri_rest",
+      "dow": 4,
+      "open": 690,
+      "close": 870
+    },
+    {
+      "id": "w36",
+      "facility_id": "f_kiri_rest",
+      "dow": 4,
+      "open": 1080,
+      "close": 1260
+    },
+    {
+      "id": "w37",
+      "facility_id": "f_kiri_rest",
+      "dow": 5,
+      "open": 690,
+      "close": 870
+    },
+    {
+      "id": "w38",
+      "facility_id": "f_kiri_rest",
+      "dow": 5,
+      "open": 1080,
+      "close": 1320
+    },
+    {
+      "id": "w39",
+      "facility_id": "f_kiri_rest",
+      "dow": 6,
+      "open": 690,
+      "close": 900
+    },
+    {
+      "id": "w40",
+      "facility_id": "f_kiri_rest",
+      "dow": 6,
+      "open": 1080,
+      "close": 1320
+    },
+    {
+      "id": "w41",
+      "facility_id": "f_momiji_iwa",
+      "dow": 1,
+      "open": 900,
+      "close": 1200
+    },
+    {
+      "id": "w42",
+      "facility_id": "f_momiji_iwa",
+      "dow": 2,
+      "open": 900,
+      "close": 1200
+    },
+    {
+      "id": "w43",
+      "facility_id": "f_momiji_iwa",
+      "dow": 3,
+      "open": 900,
+      "close": 1200
+    },
+    {
+      "id": "w44",
+      "facility_id": "f_momiji_iwa",
+      "dow": 4,
+      "open": 900,
+      "close": 1200
+    },
+    {
+      "id": "w45",
+      "facility_id": "f_momiji_iwa",
+      "dow": 5,
+      "open": 900,
+      "close": 1200
+    },
+    {
+      "id": "w46",
+      "facility_id": "f_momiji_iwa",
+      "dow": 6,
+      "open": 840,
+      "close": 1260
+    },
+    {
+      "id": "w47",
+      "facility_id": "f_momiji_iwa",
+      "dow": 0,
+      "open": 840,
+      "close": 1200
+    },
+    {
+      "id": "w48",
+      "facility_id": "f_momiji_shop",
+      "dow": 1,
+      "open": 600,
+      "close": 1140
+    },
+    {
+      "id": "w49",
+      "facility_id": "f_momiji_shop",
+      "dow": 2,
+      "open": 600,
+      "close": 1140
+    },
+    {
+      "id": "w50",
+      "facility_id": "f_momiji_shop",
+      "dow": 3,
+      "open": 600,
+      "close": 1140
+    },
+    {
+      "id": "w51",
+      "facility_id": "f_momiji_shop",
+      "dow": 4,
+      "open": 600,
+      "close": 1140
+    },
+    {
+      "id": "w52",
+      "facility_id": "f_momiji_shop",
+      "dow": 5,
+      "open": 600,
+      "close": 1140
+    },
+    {
+      "id": "w53",
+      "facility_id": "f_momiji_shop",
+      "dow": 6,
+      "open": 540,
+      "close": 1200
+    },
+    {
+      "id": "w54",
+      "facility_id": "f_momiji_shop",
+      "dow": 0,
+      "open": 540,
+      "close": 1140
+    },
+    {
+      "id": "w55",
+      "facility_id": "f_unzen_bath",
+      "dow": 1,
+      "open": 360,
+      "close": 600
+    },
+    {
+      "id": "w56",
+      "facility_id": "f_unzen_bath",
+      "dow": 1,
+      "open": 900,
+      "close": 1380
+    },
+    {
+      "id": "w57",
+      "facility_id": "f_unzen_bath",
+      "dow": 2,
+      "open": 360,
+      "close": 600
+    },
+    {
+      "id": "w58",
+      "facility_id": "f_unzen_bath",
+      "dow": 2,
+      "open": 900,
+      "close": 1380
+    },
+    {
+      "id": "w59",
+      "facility_id": "f_unzen_bath",
+      "dow": 3,
+      "open": 360,
+      "close": 600
+    },
+    {
+      "id": "w60",
+      "facility_id": "f_unzen_bath",
+      "dow": 3,
+      "open": 900,
+      "close": 1380
+    },
+    {
+      "id": "w61",
+      "facility_id": "f_unzen_bath",
+      "dow": 4,
+      "open": 360,
+      "close": 600
+    },
+    {
+      "id": "w62",
+      "facility_id": "f_unzen_bath",
+      "dow": 4,
+      "open": 900,
+      "close": 1380
+    },
+    {
+      "id": "w63",
+      "facility_id": "f_unzen_bath",
+      "dow": 5,
+      "open": 360,
+      "close": 600
+    },
+    {
+      "id": "w64",
+      "facility_id": "f_unzen_bath",
+      "dow": 5,
+      "open": 900,
+      "close": 1380
+    },
+    {
+      "id": "w65",
+      "facility_id": "f_unzen_bath",
+      "dow": 6,
+      "open": 360,
+      "close": 600
+    },
+    {
+      "id": "w66",
+      "facility_id": "f_unzen_bath",
+      "dow": 6,
+      "open": 900,
+      "close": 1440
+    },
+    {
+      "id": "w67",
+      "facility_id": "f_unzen_bath",
+      "dow": 0,
+      "open": 420,
+      "close": 720
+    },
+    {
+      "id": "w68",
+      "facility_id": "f_unzen_bath",
+      "dow": 0,
+      "open": 900,
+      "close": 1320
+    },
+    {
+      "id": "w69",
+      "facility_id": "f_unzen_kids",
+      "dow": 1,
+      "open": 540,
+      "close": 1200
+    },
+    {
+      "id": "w70",
+      "facility_id": "f_unzen_kids",
+      "dow": 2,
+      "open": 540,
+      "close": 1200
+    },
+    {
+      "id": "w71",
+      "facility_id": "f_unzen_kids",
+      "dow": 3,
+      "open": 540,
+      "close": 1200
+    },
+    {
+      "id": "w72",
+      "facility_id": "f_unzen_kids",
+      "dow": 4,
+      "open": 540,
+      "close": 1200
+    },
+    {
+      "id": "w73",
+      "facility_id": "f_unzen_kids",
+      "dow": 5,
+      "open": 540,
+      "close": 1260
+    },
+    {
+      "id": "w74",
+      "facility_id": "f_unzen_kids",
+      "dow": 6,
+      "open": 480,
+      "close": 1260
+    },
+    {
+      "id": "w75",
+      "facility_id": "f_unzen_kids",
+      "dow": 0,
+      "open": 480,
+      "close": 1200
+    },
+    {
+      "id": "w76",
+      "facility_id": "f_yamawarai",
+      "dow": 1,
+      "open": 690,
+      "close": 840
+    },
+    {
+      "id": "w77",
+      "facility_id": "f_yamawarai",
+      "dow": 1,
+      "open": 1080,
+      "close": 1260
+    },
+    {
+      "id": "w78",
+      "facility_id": "f_yamawarai",
+      "dow": 2,
+      "open": 690,
+      "close": 840
+    },
+    {
+      "id": "w79",
+      "facility_id": "f_yamawarai",
+      "dow": 2,
+      "open": 1080,
+      "close": 1260
+    },
+    {
+      "id": "w80",
+      "facility_id": "f_yamawarai",
+      "dow": 3,
+      "open": 690,
+      "close": 840
+    },
+    {
+      "id": "w81",
+      "facility_id": "f_yamawarai",
+      "dow": 3,
+      "open": 1080,
+      "close": 1260
+    },
+    {
+      "id": "w82",
+      "facility_id": "f_yamawarai",
+      "dow": 4,
+      "open": 690,
+      "close": 840
+    },
+    {
+      "id": "w83",
+      "facility_id": "f_yamawarai",
+      "dow": 4,
+      "open": 1080,
+      "close": 1260
+    },
+    {
+      "id": "w84",
+      "facility_id": "f_yamawarai",
+      "dow": 5,
+      "open": 690,
+      "close": 870
+    },
+    {
+      "id": "w85",
+      "facility_id": "f_yamawarai",
+      "dow": 5,
+      "open": 1050,
+      "close": 1290
+    },
+    {
+      "id": "w86",
+      "facility_id": "f_yamawarai",
+      "dow": 6,
+      "open": 690,
+      "close": 900
+    },
+    {
+      "id": "w87",
+      "facility_id": "f_yamawarai",
+      "dow": 6,
+      "open": 1050,
+      "close": 1290
+    },
+    {
+      "id": "w88",
+      "facility_id": "f_yuge",
+      "dow": 1,
+      "open": 480,
+      "close": 1140
+    },
+    {
+      "id": "w89",
+      "facility_id": "f_yuge",
+      "dow": 2,
+      "open": 480,
+      "close": 1140
+    },
+    {
+      "id": "w90",
+      "facility_id": "f_yuge",
+      "dow": 3,
+      "open": 480,
+      "close": 1140
+    },
+    {
+      "id": "w91",
+      "facility_id": "f_yuge",
+      "dow": 4,
+      "open": 480,
+      "close": 1140
+    },
+    {
+      "id": "w92",
+      "facility_id": "f_yuge",
+      "dow": 5,
+      "open": 480,
+      "close": 1200
+    },
+    {
+      "id": "w93",
+      "facility_id": "f_yuge",
+      "dow": 6,
+      "open": 450,
+      "close": 1200
+    },
+    {
+      "id": "w94",
+      "facility_id": "f_yuge",
+      "dow": 0,
+      "open": 480,
+      "close": 1080
+    },
+    {
+      "id": "w95",
+      "facility_id": "f_chapu",
+      "dow": 1,
+      "open": 540,
+      "close": 1020
+    },
+    {
+      "id": "w96",
+      "facility_id": "f_chapu",
+      "dow": 2,
+      "open": 540,
+      "close": 1020
+    },
+    {
+      "id": "w97",
+      "facility_id": "f_chapu",
+      "dow": 3,
+      "open": 540,
+      "close": 1020
+    },
+    {
+      "id": "w98",
+      "facility_id": "f_chapu",
+      "dow": 4,
+      "open": 540,
+      "close": 1020
+    },
+    {
+      "id": "w99",
+      "facility_id": "f_chapu",
+      "dow": 5,
+      "open": 510,
+      "close": 1050
+    },
+    {
+      "id": "w100",
+      "facility_id": "f_chapu",
+      "dow": 6,
+      "open": 510,
+      "close": 1050
+    },
+    {
+      "id": "w101",
+      "facility_id": "f_chapu",
+      "dow": 0,
+      "open": 540,
+      "close": 1020
+    },
+    {
+      "id": "w102",
+      "facility_id": "f_yuzuya",
+      "dow": 1,
+      "open": 570,
+      "close": 1080
+    },
+    {
+      "id": "w103",
+      "facility_id": "f_yuzuya",
+      "dow": 2,
+      "open": 570,
+      "close": 1080
+    },
+    {
+      "id": "w104",
+      "facility_id": "f_yuzuya",
+      "dow": 3,
+      "open": 570,
+      "close": 1080
+    },
+    {
+      "id": "w105",
+      "facility_id": "f_yuzuya",
+      "dow": 4,
+      "open": 570,
+      "close": 1080
+    },
+    {
+      "id": "w106",
+      "facility_id": "f_yuzuya",
+      "dow": 5,
+      "open": 570,
+      "close": 1110
+    },
+    {
+      "id": "w107",
+      "facility_id": "f_yuzuya",
+      "dow": 6,
+      "open": 540,
+      "close": 1140
+    },
+    {
+      "id": "w108",
+      "facility_id": "f_footbath",
+      "dow": 0,
+      "open": 480,
+      "close": 1080
+    },
+    {
+      "id": "w109",
+      "facility_id": "f_footbath",
+      "dow": 1,
+      "open": 480,
+      "close": 1080
+    },
+    {
+      "id": "w110",
+      "facility_id": "f_footbath",
+      "dow": 2,
+      "open": 480,
+      "close": 1080
+    },
+    {
+      "id": "w111",
+      "facility_id": "f_footbath",
+      "dow": 3,
+      "open": 480,
+      "close": 1080
+    },
+    {
+      "id": "w112",
+      "facility_id": "f_footbath",
+      "dow": 4,
+      "open": 480,
+      "close": 1080
+    },
+    {
+      "id": "w113",
+      "facility_id": "f_footbath",
+      "dow": 5,
+      "open": 480,
+      "close": 1140
+    },
+    {
+      "id": "w114",
+      "facility_id": "f_footbath",
+      "dow": 6,
+      "open": 450,
+      "close": 1140
+    },
+    {
+      "id": "w115",
+      "facility_id": "f_yuzuya",
+      "dow": 0,
+      "open": 570,
+      "close": 1080
+    }
+  ],
+  "date_windows": [
+    {
+      "id": "dw1",
+      "facility_id": "f_chapu",
+      "cal_date": "2026-10-05",
+      "closed": true,
+      "note": "台風接近のため終日閉鎖（町のお知らせ）"
+    }
+  ],
+  "maintenance": [
+    {
+      "id": "m_roten_overnight",
+      "facility_id": "f_kiri_roten",
+      "place_id": null,
+      "title": "大露天風呂 濾過装置点検（跨夜）",
+      "start": "2026-10-02T22:00:00+09:00",
+      "end": "2026-10-03T06:30:00+09:00",
+      "status": "scheduled",
+      "source_id": "s_kiri_official",
+      "note": "夜の部を短縮し翌朝も6:30まで入浴不可。檜風呂・食事・宿泊は通常営業。"
+    },
+    {
+      "id": "m_roten_multiday",
+      "facility_id": "f_kiri_roten",
+      "place_id": null,
+      "title": "大露天風呂 大規模改修（2泊3日）",
+      "start": "2026-10-05T22:00:00+09:00",
+      "end": "2026-10-07T10:00:00+09:00",
+      "status": "scheduled",
+      "source_id": "s_kiri_official",
+      "note": "複数日にまたがる改修。10/6は全面利用不可。"
+    },
+    {
+      "id": "m_iwa_partial",
+      "facility_id": "f_momiji_iwa",
+      "place_id": null,
+      "title": "岩風呂 タイル補修",
+      "start": "2026-10-03T09:00:00+09:00",
+      "end": "2026-10-03T15:00:00+09:00",
+      "status": "scheduled",
+      "source_id": "s_field_2026",
+      "note": "岩風呂のみ。売店は通常営業。"
+    },
+    {
+      "id": "m_footbath_zone2",
+      "facility_id": "f_footbath",
+      "place_id": null,
+      "title": "足湯 第2区画 排水点検",
+      "start": "2026-10-01T13:00:00+09:00",
+      "end": "2026-10-01T16:00:00+09:00",
+      "status": "in_progress",
+      "source_id": "s_field_2026",
+      "note": "第1区画は利用可。施設単位では一部利用可と表示。"
+    }
+  ],
+  "sources": [
+    {
+      "id": "s_kiri_official",
+      "title": "霧見湯旅館 公式サイト",
+      "url": "https://guide.example.jp/official/kirimiya",
+      "kind": "official",
+      "fetched_at": "2026-09-28T10:00:00+09:00",
+      "last_ok_at": "2026-09-28T10:00:00+09:00",
+      "http_status": 200,
+      "link_state": "ok",
+      "trust": "official"
+    },
+    {
+      "id": "s_momiji_oldpage",
+      "title": "もみじ館 旧料金ページ（移転前URL）",
+      "url": "https://guide.example.jp/momiji/old-onsen-data",
+      "kind": "web",
+      "fetched_at": "2026-09-29T15:00:00+09:00",
+      "last_ok_at": "2026-03-10T12:00:00+09:00",
+      "http_status": 404,
+      "link_state": "broken",
+      "trust": "stale",
+      "note_hidden": true
+    },
+    {
+      "id": "s_unzen_official",
+      "title": "雲仙ホテル 宿泊プラン",
+      "url": "https://guide.example.jp/official/unzen",
+      "kind": "official",
+      "fetched_at": "2026-09-27T09:00:00+09:00",
+      "last_ok_at": "2026-09-27T09:00:00+09:00",
+      "http_status": 200,
+      "link_state": "ok",
+      "trust": "official"
+    },
+    {
+      "id": "s_field_2026",
+      "title": "現地聞き取り調査（2026年9月）",
+      "url": null,
+      "kind": "field",
+      "fetched_at": "2026-09-25T14:00:00+09:00",
+      "last_ok_at": "2026-09-25T14:00:00+09:00",
+      "link_state": "ok",
+      "trust": "verified"
+    },
+    {
+      "id": "s_phone_yuge",
+      "title": "湯気カフェ 電話確認メモ",
+      "url": null,
+      "kind": "phone",
+      "fetched_at": "2026-09-20T11:00:00+09:00",
+      "last_ok_at": "2026-09-20T11:00:00+09:00",
+      "link_state": "ok",
+      "trust": "unverified"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "p_station",
+      "to": "p_footbath",
+      "sec": 240,
+      "kind": "covered"
+    },
+    {
+      "id": "e2",
+      "from": "p_footbath",
+      "to": "p_shop",
+      "sec": 180,
+      "kind": "street"
+    },
+    {
+      "id": "e3",
+      "from": "p_shop",
+      "to": "p_cafe",
+      "sec": 200,
+      "kind": "street"
+    },
+    {
+      "id": "e4",
+      "from": "p_cafe",
+      "to": "p_dining",
+      "sec": 260,
+      "kind": "street"
+    },
+    {
+      "id": "e5",
+      "from": "p_dining",
+      "to": "p_kiri",
+      "sec": 420,
+      "kind": "park"
+    },
+    {
+      "id": "e6",
+      "from": "p_kiri",
+      "to": "p_park",
+      "sec": 360,
+      "kind": "park"
+    },
+    {
+      "id": "e7",
+      "from": "p_park",
+      "to": "p_momiji",
+      "sec": 520,
+      "kind": "stair"
+    },
+    {
+      "id": "e8",
+      "from": "p_momiji",
+      "to": "p_station",
+      "sec": 600,
+      "kind": "street"
+    },
+    {
+      "id": "e9",
+      "from": "p_station",
+      "to": "p_cafe",
+      "sec": 300,
+      "kind": "covered"
+    },
+    {
+      "id": "e10",
+      "from": "p_dining",
+      "to": "p_unzen",
+      "sec": 480,
+      "kind": "street"
+    },
+    {
+      "id": "e11",
+      "from": "p_unzen",
+      "to": "p_kiri",
+      "sec": 400,
+      "kind": "street"
+    },
+    {
+      "id": "e12",
+      "from": "p_shop",
+      "to": "p_dining",
+      "sec": 240,
+      "kind": "street"
+    },
+    {
+      "id": "e13",
+      "from": "p_momiji",
+      "to": "p_kiri",
+      "sec": 540,
+      "kind": "stair"
+    }
+  ]
+}

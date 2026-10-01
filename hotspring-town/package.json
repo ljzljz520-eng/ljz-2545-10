@@ -1,0 +1,17 @@
+{
+  "name": "yunoki-guide",
+  "version": "1.0.0",
+  "description": "柚木沢温泉小镇导览 — 地图筛选 / 行程编排 / 步行网络 / 设施级维护 / 来源可信",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node src/server/index.js",
+    "init-db": "node scripts/init-db.js",
+    "seed:reset": "node scripts/init-db.js --force",
+    "test": "node --test test/",
+    "test:pg": "DATABASE_URL=${DATABASE_URL:-postgres://guide:guide@localhost:5432/hotspring} node --test test/pg.integration.test.js",
+    "acceptance": "python3 scripts/acceptance.py"
+  }
+}

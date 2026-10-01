@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>柚木沢温泉郷 まち歩きガイド</title>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%E2%99%A8%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">♨</span>
+    <div>
+      <h1>柚木沢温泉郷<span class="brand-sub">まち歩きガイド</span></h1>
+    </div>
+  </div>
+  <div class="device-box">
+    <label>この端末</label>
+    <select id="deviceSelect" title="端末切替（2台編集のシミュレーション）">
+      <option value="dev-phone-a">📱 スマホA</option>
+      <option value="dev-phone-b">📱 スマホB</option>
+    </select>
+  </div>
+</header>
+
+<div id="offlineBanner" class="banner hidden" role="status"></div>
+
+<nav class="tabs" role="tablist">
+  <button class="tab active" data-tab="map" role="tab">🗺 マップ・検索</button>
+  <button class="tab" data-tab="plan" role="tab">🧾 マイプラン</button>
+  <button class="tab" data-tab="recommend" role="tab">✨ おすすめ</button>
+  <button class="tab" data-tab="admin" role="tab">🛠 管理・出典</button>
+  <button class="tab" data-tab="about" role="tab">📖 設計</button>
+</nav>
+
+<main>
+  <!-- ================= マップ ================= -->
+  <section id="tab-map" class="tabpanel active">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="card">
+          <h2>絞り込み</h2>
+          <div class="filter-row" id="kindFilters">
+            <label><input type="checkbox" value="lodging"> 宿泊</label>
+            <label><input type="checkbox" value="dining"> 飲食</label>
+            <label><input type="checkbox" value="onsen" checked> 温泉入浴</label>
+            <label><input type="checkbox" value="shop"> 買い物</label>
+          </div>
+          <label class="switch"><input type="checkbox" id="familyOnly"> <span>👶 親子設備で絞る</span></label>
+          <div class="walk-filter">
+            <label>🚶 徒歩圏：<b id="walkLabel">指定なし</b></label>
+            <input type="range" id="walkRange" min="0" max="15" step="1" value="0">
+            <label class="switch"><input type="checkbox" id="walkEnable"> 起点からの徒歩時間で絞る</label>
+            <select id="originSelect" title="起点"></select>
+          </div>
+          <div class="date-row">
+            <label>📅 見たい日</label>
+            <input type="date" id="mapDate">
+          </div>
+          <p class="filter-explain" id="filterSummary"></p>
+        </div>
+        <div class="card hidden-card">
+          <h2>非表示の理由（<span id="hiddenCount">0</span>）</h2>
+          <ul id="hiddenList" class="hidden-list"></ul>
+        </div>
+      </aside>
+      <div class="mapwrap">
+        <svg id="mapSvg" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid meet" role="img" aria-label="町の地図">
+          <defs>
+            <linearGradient id="riverGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#8ec9d8"/><stop offset="100%" stop-color="#5fa9bd"/>
+            </linearGradient>
+            <radialGradient id="steamGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity=".9"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect x="0" y="0" width="1000" height="700" fill="#f6f0e4"/>
+          <path id="river" d="M -20 520 C 180 470, 320 560, 520 500 S 820 430, 1040 480 L 1040 700 L -20 700 Z" fill="url(#riverGrad)" opacity=".55"/>
+          <g id="edgeLayer"></g>
+          <g id="placeLayer"></g>
+        </svg>
+        <div class="maplegend">
+          <span><i class="dot onsen"></i>温泉</span><span><i class="dot lodging"></i>宿泊</span>
+          <span><i class="dot dining"></i>飲食</span><span><i class="dot shop"></i>買い物</span>
+          <span><i class="dot facility"></i>施設</span>
+          <span class="legend-note">点線＝点検中の設備を含む</span>
+        </div>
+      </div>
+      <div id="placePanel" class="card place-panel"></div>
+    </div>
+  </section>
+
+  <!-- ================= プラン ================= -->
+  <section id="tab-plan" class="tabpanel">
+    <div class="plan-layout">
+      <div class="card">
+        <h2>マイプラン</h2>
+        <div class="plan-controls">
+          <input type="date" id="planDate">
+          <select id="planOrigin"></select>
+          <button id="newPlanBtn" class="btn">新規プラン作成</button>
+          <select id="planSelect"></select>
+        </div>
+        <div class="plan-meta" id="planMeta"></div>
+        <div class="plan-toolbar">
+          <button id="recomputeBtn" class="btn">🔄 全体を再計算</button>
+          <button id="repairBtn" class="btn secondary">🩹 依存箇所だけ部分修復</button>
+          <span class="hint">ロック中の点は、時刻が変わっても消さず衝突を説明します</span>
+        </div>
+        <ol id="planItems" class="plan-items"></ol>
+        <div class="add-item">
+          <select id="addFacilitySelect"></select>
+          <button id="addItemBtn" class="btn">＋ 行程に追加</button>
+        </div>
+        <div id="consistencyBox" class="consistency hidden"></div>
+      </div>
+      <div class="card">
+        <h2>アクセス可能時間帯（組み合わせ）</h2>
+        <p class="hint">行きたい設備を選ぶと、その日に入れる時間帯と最早のつながりを返します。</p>
+        <div id="slotsPick" class="slots-pick"></div>
+        <button id="slotsBtn" class="btn secondary">時間帯を組み合わせる</button>
+        <div id="slotsResult"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= おすすめ ================= -->
+  <section id="tab-recommend" class="tabpanel">
+    <div class="card">
+      <h2>テーマ別おすすめ</h2>
+      <div class="date-row"><label>日付</label><input type="date" id="recDate"></div>
+      <p class="hint">おすすめは「行きたい設備」まで展開して提示します。点検中の設備は確実に使えるものだけを候補にします。</p>
+      <div id="themeList"></div>
+    </div>
+  </section>
+
+  <!-- ================= 管理・出典 ================= -->
+  <section id="tab-admin" class="tabpanel">
+    <div class="admin-grid">
+      <div class="card">
+        <h2>点検・メンテナンス</h2>
+        <div id="maintList"></div>
+        <details class="admin-form">
+          <summary>点検を登録する</summary>
+          <select id="maintFacility"></select>
+          <input type="datetime-local" id="maintStart">
+          <input type="datetime-local" id="maintEnd">
+          <input type="text" id="maintTitle" placeholder="件名">
+          <button id="maintAddBtn" class="btn">登録</button>
+        </details>
+      </div>
+      <div class="card">
+        <h2>出典リンクの核查</h2>
+        <p class="hint">リンクが切れた情報は「要確認」に格下げして表示します。</p>
+        <button id="linkCheckBtn" class="btn secondary">リンクを再核查</button>
+        <ul id="sourceList" class="source-list"></ul>
+      </div>
+      <div class="card">
+        <h2>地点の統合</h2>
+        <select id="mergeKept"></select><select id="mergeRemoved"></select>
+        <input type="text" id="mergeReason" placeholder="統合理由">
+        <button id="mergeBtn" class="btn">統合を実行</button>
+        <p class="hint">旧地点は地図から消えますが、ID は残って新地点へリダイレクトします。</p>
+      </div>
+      <div class="card">
+        <h2>オフラインパック</h2>
+        <button id="offlinePubBtn" class="btn secondary">30日有効なパックを発行</button>
+        <button id="offlineExpBtn" class="btn secondary">期限切れパックを発行（確認用）</button>
+        <button id="offlineGetBtn" class="btn">最新パックを確認</button>
+        <pre id="offlineInfo" class="offline-pre"></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 設計説明 ================= -->
+  <section id="tab-about" class="tabpanel">
+    <div id="aboutContent" class="card about"></div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>♨ 柚木沢温泉郷はデモ用の架空データです。泉質は説明情報であり、医療効能を主張するものではありません。</span>
+</footer>
+
+<script src="/js/app.js" type="module"></script>
+</body>
+</html>
